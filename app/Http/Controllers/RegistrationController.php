@@ -11,7 +11,6 @@ class RegistrationController extends Controller
     {
         return view('registration');
     }
-    
     public function registration(Request $request)
     {
 
@@ -21,22 +20,22 @@ class RegistrationController extends Controller
         $users->last_name=$request->last_name;
         $users->email=$request->email;
         $users->contact_no=$request->contact_no;
-        $users->password=  bcrypt($request->password);
+        $users->password=bcrypt($request->password);
 
         $users->save();
     }
-    /*public function processRegisration()
+    public function delete($id)
     {
-        $this->validate(request(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'contact_no' => 'required',
-            'password' => 'required',
-            'roles' => 'customer',
-            'is_active' => 'required'
-    ]);
-    $user = User::create(request(['first_name','last_name','email','contact_no','password','roles','is_active'  		
-    	]));
-    }*/
+        $users = RegModel::where('id',$id);
+        //$users = RegModel::where('id',$id);
+        //dd($users);
+        $users->delete();
+        return redirect('view-vendors');
+    }
+    public function showData($id)
+    {
+        $users = RegModel::find($id);
+        return view('/editvendor',['users'=>$users]);
+    }  
+
 }

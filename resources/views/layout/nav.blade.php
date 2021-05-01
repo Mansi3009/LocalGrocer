@@ -12,16 +12,29 @@
 		<li class="nav-item active">
 			<a class="nav-link" href="#">Dashboard</a>
 		</li>
+		
 		<li class="nav-item">
-			<a class="nav-link" href="#">Users</a>
+			<a class="nav-link" href="{{route('user')}}">Users</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Products</a>
+			<a class="nav-link" href="{{route('productview')}}">Products</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Log Out</a>
+			<a class="nav-link" href="{{route('categoryview')}}">Category</a>
 		</li>
-	</ul>
+
+		
+        @if(auth()->user())
+            <li class="nav-item">
+				<a class="nav-link" href="#">Log Out</a>
+			</li>
+        @else
+			<li class="nav-item">
+				<a class="nav-link" href="#">Login</a>
+			</li>   
+		@endif
+
+		</ul>
 
 	<form class="form-inline mt-5 mt-md-0 ">
 		<input class="form-control mr-sm-2" style="width: 350px;" type="text" 	placeholder="Search">
@@ -29,3 +42,5 @@
 	</form>
 	</div>
 </nav>
+
+	

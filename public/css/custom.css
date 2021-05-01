@@ -130,20 +130,33 @@
 body, html {
     
 }
+/*.card-container.card:hover
+{
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    transform: rotate(0);
+}*/
 .img
 {
     height: 575px;
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
-    width: auto;
 }
-
-.card-container.card {
+.card-container.card 
+{
+    margin-top: 55px;
     max-width: 370px;
     padding: 40px 40px;
+    /*-webkit-transition: .3s;
+    -moz-transition: .3s;
+    transition: .3s;
+    -webkit-transform: rotateY(40deg);
+    -moz-transform: rotateY(40deg);
+    transform: rotateY(40deg);*/
 }
 
-.btn {
+.btn 
+{
     font-weight: 700;
     height: 36px;
     -moz-user-select: none;
@@ -266,4 +279,54 @@ body, html {
 .forgot-password:active,
 .forgot-password:focus{
     color: rgb(12, 97, 33);
+}
+.card {
+    background-color: #F7F7F7;
+    padding: 5px 10px 15px;
+    margin: 0 auto 25px;
+    margin-top: 100px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgb(0 0 0 / 30%);
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 30%);
+}
+/* product add form css... */
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+}
+.form-control{
+    /*border-radius:1.5rem;*/
+    border-radius: 10px;
+}
+.btnn
+{
+    border:none;
+    border-radius:5px;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #0062cc;
+    color: #fff;
+}
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 80px;
 }

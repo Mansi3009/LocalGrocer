@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Auth;
 use Auth;
 
 class LoginController extends Controller
@@ -11,7 +12,7 @@ class LoginController extends Controller
     {
         return view('login');
     }   
-    protected function saveLogin(Request $request) 
+    public function saveLogin(Request $request) 
 	{
     	$credentials = [
     		'email' => $request->email,
@@ -19,13 +20,24 @@ class LoginController extends Controller
     	];
         if (Auth::attempt($credentials)) 
         {
-            // Authentication passed...
-            // redirect()->intended('dashboard');
-            dd('true');
+            //dd(Auth::user());
+            if(Auth::user()->roles == 'admin')
+            {
+                return redirect()->route('admin');
+            }
+            elseif(Auth::user()->roles == 'customer')
+            {
+                 return redirect()->route('categorydisplay');
+            }
+            elseif(Auth::user()->roles == 'vendor')
+            {
+                return redirect()->route('vendor');
+            }
         }  
         else 
         {
-        	dd('false');
+                return redirect()->route('login');
+        	//dd('false');
         }
-	}
+    }
 }

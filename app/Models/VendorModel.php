@@ -15,7 +15,9 @@ class VendorModel extends Model
     protected $fillable = ['brand_name', 'establish_year','product_category', 'website_link','store_image', 'registration_proof',
 	];
 
-	/*public function setImage($value){
-		$this->attributes['store_image'] = json_encode($value);
-	}*/
+	//joins 
+	public function users()
+	{
+		return $this->belongsTo('App\Models\RegModel','user_id','id');
+	}
 }
