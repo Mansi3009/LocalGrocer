@@ -95,35 +95,69 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-
-            $('.add-to-cart').click(function(){  
-            
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            }); 
-
-            var product_id = $(this).closest('div').find('#product_id').val();
-            var product_price = $(this).closest('div').find('#product_price').val();   
-            var product_discount = $(this).closest('div').find('#product_discount').val(); 
-            //alert(product_price);
-
-            $.ajax({
-                url: 'add-to-cart',
-                data: {
-                    product_id: product_id, 
-                    product_price: product_price, 
-                    product_discount: product_discount  
-                },
-                dataType: 'json',
-                type: 'GET',
-                success: function(response) {        
-            
-            },
-        });
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                }); 
+            $('.add-to-cart').click(function(e) {  
+                e.preventDefault(); //important
+                var product_id = $(this).closest('div').find('#product_id').val();
+                var product_price = $(this).closest('div').find('#product_price').val();   
+                var product_discount = $(this).closest('div').find('#product_discount').val(); 
+                $.ajax({
+                    type:'POST',
+                    url:"{{ route('add-to-cart.post') }}",
+                    data:{
+                        product_id: product_id, 
+                        product_price: product_price, 
+                        product_discount: product_discount,
+                        product_qty: 1,
+                    },
+                    success:function(data){
+                        //route to next page
+                        alert(data.message);
+                    }
+                });
+                // $.ajax('add-to-cart', {
+                //     type: 'GET',  // http method
+                //     data: { 
+                //         data: {
+                //             product_id: product_id, 
+                //             product_price: product_price, 
+                //             product_discount: product_discount  
+                //         } 
+                //     },  // data to submit
+                //     success: function (data, status, xhr) {
+                //         console.log('hello')
+                //         // $('p').append('status: ' + status + ', data: ' + data);
+                //     },
+                //     error: function (jqXhr, textStatus, errorMessage) {
+                //         console.log('error')
+                //             // $('p').append('Error' + errorMessage);
+                //     }
+                // });
+                // $.ajax({
+                //     url: 'add-to-cart',
+                //     data: ,
+                //     dataType: 'json',
+                //     type: 'GET',
+                //     success: function(response) {       
+                //         console.log(response)
+                //     } 
+                // },
+            });
     }); 
-});
 </script>
 @endsection
 
+$.ajax('/jquery/submitData', {
+    type: 'POST',  // http method
+    data: { myData: 'This is my data.' },  // data to submit
+    success: function (data, status, xhr) {
+        $('p').append('status: ' + status + ', data: ' + data);
+    },
+    error: function (jqXhr, textStatus, errorMessage) {
+            $('p').append('Error' + errorMessage);
+    }
+});

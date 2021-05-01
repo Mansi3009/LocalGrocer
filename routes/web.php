@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangeStatusController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,4 +88,4 @@ Route::get('productdisplay/{id}',[CategoryController::class,'viewcategory'])->na
 Route::get('addItem/{id}',[CartController::class,'addItem']);
 
 Route::get('cart',[CartController::class,'cart'])->name('cart');
-Route::get('add-to-cart',[CartController::class,'addToCart']);
+Route::post('add-to-cart',[CartController::class,'addToCart'])->name('add-to-cart.post');
