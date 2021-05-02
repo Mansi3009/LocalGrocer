@@ -34,7 +34,7 @@ class CartController extends Controller
         )->first();
 
         if (!$cart) {
-            $success = $cartData->create($cartData);    
+            $success = $cartObject->create($cartData);    
         } else {
             $cartData['quantity'] = $cart->quantity + 1;
             $success = $cart->update($cartData);
