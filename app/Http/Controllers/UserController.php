@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\RegModel;
+use App\Models\RegModel;
 
 
 class UserController extends Controller

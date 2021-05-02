@@ -9,6 +9,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangeStatusController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +49,6 @@ Route::get('user',[UserController::class,'viewuser'])->name('user');
 Route::get('deleteuser/{id}',[UserController::class,'deleteuser'])->name('deleteuser');
 Route::get('edituser/{id}',[UserController::class,'showUser'])->name('editu');
 Route::post('edituser',[UserController::class,'updateUser'])->name('edituser');
-
 
 
 Route::get('view-vendors',[VendorController::class,'index'])->name('vendor');
@@ -87,4 +89,4 @@ Route::get('productdisplay/{id}',[CategoryController::class,'viewcategory'])->na
 Route::get('addItem/{id}',[CartController::class,'addItem']);
 
 Route::get('cart',[CartController::class,'cart'])->name('cart');
-Route::get('add-to-cart',[CartController::class,'addToCart']);
+Route::post('add-to-cart',[CartController::class,'addToCart'])->name('add-to-cart.post');
